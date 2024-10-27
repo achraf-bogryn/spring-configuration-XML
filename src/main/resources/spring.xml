@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+<!--    <bean id="alien1" class="com.telusko.Alien" scope="prototype">-->
+    <bean id="alien1" class="com.telusko.Alien" autowire="byType" >
+<!-- setter injection  -->
+<!--        <property name="age" value="78"></property>-->
+<!-- constructor injection       -->
+<!--        <constructor-arg value="21"/>-->
+<!--        <property name="lap" ref="laptop"></property>-->
+<!--        <constructor-arg ref="laptop"/>-->
+
+<!--        We can solve problem the order of parameter by adding type pramaeter ib primitive and also clas the refer-->
+<!--   <constructor-arg  type="com.telusko.Laptop"  ref="laptop"/>-->
+<!--    <constructor-arg type="int" value="21"/>-->
+<!--        Or we add index because we have problem if we have more than one variable have same DataType-->
+
+<!--        <constructor-arg  index="1" ref="laptop"/>-->
+<!--        <constructor-arg index="0" value="21"/>-->
+<!--   Or we have another solution use name By sing name order the parameter is important
+       to solve this problem you have to use constructorProperty notation in top constructor
+        creation-->
+
+<!--        <constructor-arg  name="lap" ref="laptop"/>-->
+<!--        <constructor-arg name="age" value="21"/>-->
+        <property name="age" value="21"/>
+<!--        <property name="com" ref="com">-->
+        <property name="com" >
+<!--            we can use inner Beans to give only Alien access to this bean-->
+            <bean id="com1" class="com.telusko.Laptop" primary="true">
+            </bean>
+        </property>
+
+    </bean>
+<!--    <bean id="alien2" class="com.telusko.Alien"></bean>-->
+<!--    <bean id="com1" class="com.telusko.Laptop" primary="true">-->
+<!--    </bean>-->
+<!--we use lazy-init for when we create benas  we want created by default we
+  want him create only when we create a object using getBeans only we want or do injection between
+   two beans-->
+
+    <bean id="com" class="com.telusko.Desktop" lazy-init="true">
+    </bean>
+</beans>
