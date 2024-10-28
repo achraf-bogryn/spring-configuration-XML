@@ -1,9 +1,20 @@
 package com.telusko;
 
-import java.beans.ConstructorProperties;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+import java.beans.ConstructorProperties;
+@Component
+//@Scope("prototype")
 public class Alien {
+  @Value("21")
    private int age;
+//   Field injection
+   @Autowired
+   @Qualifier("desktop")
    private Compuetr com;
 
     public Alien(){
